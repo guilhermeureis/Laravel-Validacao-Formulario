@@ -21,3 +21,13 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Page::class, function (Faker $faker) {
+    $name = $faker->name;
+    $paragraphs = '<p>' . implode('</p><p>', $faker->paragraphs) . '</p>';
+    return [
+        'title' => $name,
+        'url' => str_slug($name),
+        'body' => $paragraphs,
+    ];
+});
